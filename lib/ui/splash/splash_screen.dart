@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder.reactive(
+    return ViewModelBuilder<SplashVm>.reactive(
       viewModelBuilder: () => SplashVm(),
       builder: (context, vm, _) => Scaffold(
         body: Center(

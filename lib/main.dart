@@ -19,10 +19,10 @@ main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GetIt.I.registerSingleton<LocalData>(LocalData());
   GetIt.I.registerSingleton<ApiClient>(ApiClient());
-  GetIt.I.registerSingleton<AppModel>(AppModel());
   GetIt.I.registerSingleton<UserRepo>(UserRepoImp());
   GetIt.I.registerSingleton<AuthRepo>(AuthRepoImp());
   GetIt.I.registerSingleton<PostRepo>(PostRepoImp());
+  GetIt.I.registerSingleton<AppModel>(AppModel());
   await GetIt.I.allReady();
   runApp(MainApp());
 }

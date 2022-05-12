@@ -5,7 +5,7 @@ class LocalData {
   final FlutterSecureStorage _flutterSecureStorage = FlutterSecureStorage();
 
   Future<String?> getToken() async =>
-      await _flutterSecureStorage.read(key: AppConstants.token);
+      await _flutterSecureStorage.read(key: AppConstants.jwt);
 
   Future<void> clearStorage() async => await _flutterSecureStorage.deleteAll();
 }

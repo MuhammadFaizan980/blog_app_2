@@ -1,3 +1,4 @@
+import 'package:blog_app_2/data/end_points.dart';
 import 'package:blog_app_2/data/local_data.dart';
 import 'package:blog_app_2/data/models/response_model.dart';
 import 'package:blog_app_2/utils/app_constants.dart';
@@ -7,7 +8,7 @@ import 'package:get_it/get_it.dart';
 class ApiClient {
   late Dio _dio;
   final LocalData _localData = GetIt.I.get<LocalData>();
-  final String _baseUrl = '192.168.1.69';
+  final String _baseUrl = 'http://192.168.1.69:8080';
 
   ApiClient() {
     initDio();
@@ -52,9 +53,9 @@ class ApiClient {
   ResponseModel _parseResponse(dynamic response) {
     try {
       return ResponseModel(
-        success: response[AppConstants.success],
-        message: response[AppConstants.message],
-        data: response[AppConstants.data],
+        success: response.data[AppConstants.success],
+        message: response.data[AppConstants.message],
+        data: response.data[AppConstants.data],
       );
     } catch (e) {
       print('===PARSING EXCEPTION===: $e');
@@ -64,5 +65,23 @@ class ApiClient {
         data: null,
       );
     }
+  }
+
+  /// API Calls...
+
+  Future<ResponseModel> login({
+    required String email,
+    required String password,
+  }) async {
+    Map<String, dynamic> data = {
+      'email': 'demo@gmail.com',
+      'password': '123456',
+    };
+    return _parseResponse(
+      await _dio.post(
+        EndPoints.login,
+        data: data,
+      ),
+    );
   }
 }
