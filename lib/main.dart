@@ -10,6 +10,7 @@ import 'package:blog_app_2/routes.dart';
 import 'package:blog_app_2/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:stacked/stacked.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
@@ -27,10 +28,14 @@ main() async {
 class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateRoute: onGenerateRoute,
-      navigatorKey: navigatorKey,
-      initialRoute: SplashScreen.routeName,
+    return ViewModelBuilder.reactive(
+      viewModelBuilder: () => AppModel(),
+      builder: (context, vm, _) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: onGenerateRoute,
+        navigatorKey: navigatorKey,
+        initialRoute: SplashScreen.routeName,
+      ),
     );
   }
 }
