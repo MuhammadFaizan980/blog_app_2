@@ -1,6 +1,5 @@
 import 'package:blog_app_2/ui/login/login_vm.dart';
 import 'package:blog_app_2/widgets/app_button.dart';
-import 'package:blog_app_2/widgets/app_circular_loader.dart';
 import 'package:blog_app_2/widgets/app_text_field.dart';
 import 'package:blog_app_2/widgets/application_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -40,14 +39,11 @@ class LoginScreen extends StatelessWidget {
                     AppButton.expanded(
                       label: 'Login',
                       onTap: () {},
+                      isLoading: vm.isLoading,
                     ),
                   ],
                 ),
               ),
-            ),
-            Visibility(
-              visible: vm.isLoading,
-              child: AppCircularLoader(),
             ),
           ],
         ),

@@ -6,15 +6,18 @@ class AppButton extends StatelessWidget {
   final String label;
   final Function()? onTap;
   final bool expanded;
+  final bool isLoading;
 
   AppButton({
     required this.label,
     required this.onTap,
+    this.isLoading = false,
   }) : expanded = false;
 
   AppButton.expanded({
     required this.label,
     required this.onTap,
+    this.isLoading = false,
   }) : expanded = true;
 
   @override
@@ -23,12 +26,21 @@ class AppButton extends StatelessWidget {
       width: expanded ? ScreenUtils.getScreenWidth() : null,
       child: TextButton(
         onPressed: onTap,
-        child: Text(
-          label,
-          style: const TextStyle(
-            color: Colors.white,
-          ),
-        ),
+        child: isLoading
+            ? const SizedBox(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 1,
+                ),
+              )
+            : Text(
+                label,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
         style: TextButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
         ),
