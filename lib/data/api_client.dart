@@ -74,8 +74,8 @@ class ApiClient {
     required String password,
   }) async {
     Map<String, dynamic> data = {
-      'email': 'demo@gmail.com',
-      'password': '123456',
+      'email': email,
+      'password': password,
     };
     return _parseResponse(
       await _dio.post(

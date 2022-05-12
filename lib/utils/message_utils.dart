@@ -7,6 +7,7 @@ class MessageUtils {
     bool isError = false,
   }) {
     BuildContext context = navigatorKey.currentState!.context;
+    ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(

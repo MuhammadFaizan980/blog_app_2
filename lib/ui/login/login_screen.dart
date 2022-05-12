@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     AppButton.expanded(
                       label: 'Login',
-                      onTap: () {},
+                      onTap: vm.validateInput,
                       isLoading: vm.isLoading,
                     ),
                   ],
