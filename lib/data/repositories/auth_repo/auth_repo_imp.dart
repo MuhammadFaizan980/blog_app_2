@@ -11,17 +11,18 @@ class AuthRepoImp extends AuthRepo {
   }
 
   @override
-  Future<ResponseModel> register(
-      {required String name,
-      required String email,
-      required String password}) async {
-    // TODO: implement register
-    throw UnimplementedError();
+  Future<ResponseModel> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    return await apiClient.register(
+        name: name, email: email, password: password);
   }
 
   @override
   Future<ResponseModel> logout() async {
-    // TODO: implement logout
-    throw UnimplementedError();
+    await localData.clearStorage();
+    return ResponseModel(success: true, message: 'Logged out', data: null);
   }
 }

@@ -46,6 +46,7 @@ class LoginVm extends BaseVm {
 
     if (responseModel.success) {
       await authRepo.localData.setToken(token: responseModel.data['jwt']);
+      await authRepo.localData.setUserId(token: responseModel.data['_id']);
       Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
     } else {
       isLoading = false;

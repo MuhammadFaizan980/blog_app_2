@@ -1,4 +1,5 @@
 import 'package:blog_app_2/ui/login/login_vm.dart';
+import 'package:blog_app_2/ui/register/register_screen.dart';
 import 'package:blog_app_2/widgets/app_button.dart';
 import 'package:blog_app_2/widgets/app_text_field.dart';
 import 'package:blog_app_2/widgets/application_app_bar.dart';
@@ -23,14 +24,14 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     AppTextField(
                       controller: vm.emailController,
-                      label: 'Enter Your Here.....',
+                      label: 'Enter Your Email Here.....',
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     AppTextField(
                       controller: vm.passwordController,
-                      label: 'Password Your Here.....',
+                      label: 'Password Your Password Here.....',
                       obscureText: true,
                     ),
                     const SizedBox(
@@ -40,6 +41,11 @@ class LoginScreen extends StatelessWidget {
                       label: 'Login',
                       onTap: vm.validateInput,
                       isLoading: vm.isLoading,
+                    ),
+                    AppButton.expanded(
+                      label: 'Register',
+                      onTap: () => Navigator.of(context)
+                          .pushReplacementNamed(RegisterScreen.routeName),
                     ),
                   ],
                 ),

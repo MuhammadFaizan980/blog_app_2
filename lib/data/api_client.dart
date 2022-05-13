@@ -84,4 +84,21 @@ class ApiClient {
       ),
     );
   }
+  Future<ResponseModel> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    Map<String, dynamic> data = {
+      'name': name,
+      'email': email,
+      'password': password,
+    };
+    return _parseResponse(
+      await _dio.post(
+        EndPoints.register,
+        data: data,
+      ),
+    );
+  }
 }
