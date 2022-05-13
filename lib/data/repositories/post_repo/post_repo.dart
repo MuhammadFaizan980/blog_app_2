@@ -8,7 +8,7 @@ abstract class PostRepo extends BaseRepo {
     required String image,
   });
 
-  Future<ResponseModel> getAllPosts();
+  Future<ResponseModel> getAllPosts({required int page});
 
   Future<ResponseModel> deletePost({required String postId});
 }

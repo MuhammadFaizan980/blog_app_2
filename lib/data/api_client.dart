@@ -8,7 +8,6 @@ import 'package:get_it/get_it.dart';
 class ApiClient {
   late Dio _dio;
   final LocalData _localData = GetIt.I.get<LocalData>();
-  final String _baseUrl = 'http://192.168.1.69:8080';
 
   ApiClient() {
     initDio();
@@ -16,7 +15,7 @@ class ApiClient {
 
   Future<void> initDio() async {
     _dio = Dio();
-    _dio.options.baseUrl = _baseUrl;
+    _dio.options.baseUrl = EndPoints.baseUrl;
     _setInterceptors();
   }
 
@@ -77,13 +76,9 @@ class ApiClient {
       'email': email,
       'password': password,
     };
-    return _parseResponse(
-      await _dio.post(
-        EndPoints.login,
-        data: data,
-      ),
-    );
+    return _parseResponse(await _dio.post(EndPoints.login, data: data));
   }
+
   Future<ResponseModel> register({
     required String name,
     required String email,
@@ -94,11 +89,31 @@ class ApiClient {
       'email': email,
       'password': password,
     };
-    return _parseResponse(
-      await _dio.post(
-        EndPoints.register,
-        data: data,
-      ),
-    );
+    return _parseResponse(await _dio.post(EndPoints.register, data: data));
+  }
+
+  Future<ResponseModel> getUserPosts({
+    required int page,
+  }) async {
+    return _parseResponse(await _dio.get(EndPoints.allPosts + page.toString()));
+  }
+
+  Future<ResponseModel> deleteUserPost({
+    required String postId,
+  }) async {
+    return _parseResponse(await _dio.delete(EndPoints.deletePost + postId));
+  }
+
+  Future<ResponseModel> createPost({
+    required String image,
+    required String title,
+    required String description,
+  }) async {
+    Map<String, dynamic> data = {
+      'title': title,
+      'description': description,
+      'image': image,
+    };
+    return _parseResponse(await _dio.post(EndPoints.createPost, data: data));
   }
 }

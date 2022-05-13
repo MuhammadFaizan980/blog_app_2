@@ -1,4 +1,7 @@
 class EndPoints {
+  ///BASE URL
+  static const String baseUrl = 'http://192.168.0.26:8080';
+
   ///Auth
   static const login = '/auth/login';
   static const register = '/auth/register';
@@ -7,7 +10,8 @@ class EndPoints {
   static const allPosts =
       '/post/get-posts/'; // pass User ID as parameter, not as query
   static const createPost = '/post/create-post';
-  static const deletePost = '/post/delete';
+  static const deletePost =
+      '/post/delete/'; // pass User ID as parameter, not as query
 
   ///User
   static const myProfile = '/user/me';
