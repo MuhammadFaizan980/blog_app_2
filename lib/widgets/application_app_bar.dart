@@ -6,16 +6,19 @@ class ApplicationAppBar extends StatelessWidget {
   final String title;
   final List<Widget>? actions;
   final Function()? onLeadingTapped;
+  double? elevation;
 
   ApplicationAppBar({
     required this.title,
     required this.actions,
     this.onLeadingTapped,
+    this.elevation,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: elevation,
       leading: onLeadingTapped == null
           ? null
           : IconButton(
@@ -35,6 +38,7 @@ PreferredSize getAppBar({
   required String title,
   List<Widget>? actions,
   Function()? onLeadingTapped,
+  double? elevation,
 }) {
   return PreferredSize(
     preferredSize: Size(
@@ -45,6 +49,7 @@ PreferredSize getAppBar({
       title: title,
       actions: actions,
       onLeadingTapped: onLeadingTapped,
+      elevation: elevation,
     ),
   );
 }

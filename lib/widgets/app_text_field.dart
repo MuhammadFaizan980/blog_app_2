@@ -5,13 +5,11 @@ class AppTextField extends StatelessWidget {
   final TextEditingController controller;
   final String label;
   final bool obscureText;
-  final int? maxLines;
 
   AppTextField({
     required this.controller,
     required this.label,
     this.obscureText = false,
-    this.maxLines,
   });
 
   @override
@@ -20,7 +18,6 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       cursorColor: AppColors.primaryColor,
-      maxLines: maxLines,
       style: const TextStyle(
         color: AppColors.primaryColor,
       ),

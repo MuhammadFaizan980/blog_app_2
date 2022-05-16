@@ -116,4 +116,28 @@ class ApiClient {
     };
     return _parseResponse(await _dio.post(EndPoints.createPost, data: data));
   }
+
+  Future<ResponseModel> getUserProfileData() async {
+    return _parseResponse(await _dio.get(EndPoints.myProfile));
+  }
+
+  Future<ResponseModel> updateUserProfileImage({
+    required String image,
+  }) async {
+    Map<String, dynamic> data = {
+      'image': image,
+    };
+    return _parseResponse(
+        await _dio.post(EndPoints.updateUserImage, data: data));
+  }
+
+  Future<ResponseModel> updateUserName({
+    required String userName,
+  }) async {
+    Map<String, dynamic> data = {
+      'name': userName,
+    };
+    return _parseResponse(
+        await _dio.post(EndPoints.updateUserName, data: data));
+  }
 }

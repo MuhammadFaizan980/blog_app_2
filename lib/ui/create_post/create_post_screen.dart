@@ -33,7 +33,6 @@ class CreatePostScreen extends StatelessWidget {
                     AppTextField(
                       controller: vm.descriptionController,
                       label: 'Post description here.....',
-                      maxLines: 5,
                     ),
                     const SizedBox(
                       height: 55,

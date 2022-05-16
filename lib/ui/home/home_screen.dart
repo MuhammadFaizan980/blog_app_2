@@ -2,6 +2,7 @@ import 'package:blog_app_2/ui/create_post/create_post_screen.dart';
 import 'package:blog_app_2/ui/home/home_vm.dart';
 import 'package:blog_app_2/utils/app_colors.dart';
 import 'package:blog_app_2/widgets/app_circular_loader.dart';
+import 'package:blog_app_2/widgets/app_drawer.dart';
 import 'package:blog_app_2/widgets/application_app_bar.dart';
 import 'package:blog_app_2/widgets/post_widget.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+        drawer: AppDrawer(),
       ),
     );
   }
