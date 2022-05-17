@@ -3,6 +3,7 @@ import 'package:blog_app_2/utils/assets.dart';
 import 'package:blog_app_2/widgets/app_circular_loader.dart';
 import 'package:blog_app_2/widgets/application_app_bar.dart';
 import 'package:blog_app_2/widgets/profile_info_widget.dart';
+import 'package:blog_app_2/widgets/update_user_name_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stacked/stacked.dart';
@@ -21,7 +22,16 @@ class UserProfileScreen extends StatelessWidget {
           elevation: 0,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (context) => UpdateUserNameSheet(),
+                ).then((_) {
+                  Navigator.of(context)
+                      .pushReplacementNamed(UserProfileScreen.routeName);
+                });
+              },
               icon: const Icon(
                 Icons.edit,
               ),

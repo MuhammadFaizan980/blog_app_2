@@ -1,6 +1,6 @@
 class EndPoints {
   ///BASE URL
-  static const String baseUrl = 'http://192.168.0.26:8080';
+  static const String baseUrl = 'http://192.168.1.22:8080';
 
   ///Auth
   static const login = '/auth/login';

@@ -12,8 +12,10 @@ import 'package:image_picker/image_picker.dart';
 
 class UserProfileVm extends BaseVm {
   BuildContext context = navigatorKey.currentState!.context;
+  TextEditingController nameController = TextEditingController();
   UserModel? _userModel;
   bool _isLoading = true;
+  bool _isUpdatingUserName = false;
 
   File? _postImage;
 
@@ -21,6 +23,13 @@ class UserProfileVm extends BaseVm {
 
   set postImage(File? value) {
     _postImage = value;
+    notifyListeners();
+  }
+
+  bool get isUpdatingUserName => _isUpdatingUserName;
+
+  set isUpdatingUserName(bool value) {
+    _isUpdatingUserName = value;
     notifyListeners();
   }
 
@@ -63,5 +72,29 @@ class UserProfileVm extends BaseVm {
       postImage = File(xFile.path);
       _updateUserProfileImage();
     }
+  }
+
+  void validateUserName() {
+    String userName = nameController.text.trim();
+    if (userName.isEmpty) {
+      MessageUtils.showToast(message: 'User name cannot be empty');
+    } else {
+      _updateUserName(userName: userName);
+    }
+  }
+
+  Future<void> _updateUserName({required String userName}) async {
+    isUpdatingUserName = true;
+    ResponseModel responseModel =
+        await userRepo.updateUserName(userName: userName);
+    MessageUtils.showMessage(
+        message: responseModel.message, isError: !responseModel.success);
+    Navigator.pop(context);
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
   }
 }

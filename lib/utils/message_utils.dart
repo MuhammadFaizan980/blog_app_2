@@ -1,5 +1,6 @@
 import 'package:blog_app_2/main.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MessageUtils {
   static void showMessage({
@@ -18,6 +19,14 @@ class MessageUtils {
         ),
         backgroundColor: isError ? Colors.red : Colors.black,
       ),
+    );
+  }
+
+  static void showToast({required String message}) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
     );
   }
 }
