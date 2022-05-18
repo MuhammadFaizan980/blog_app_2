@@ -1,6 +1,6 @@
 class EndPoints {
   ///BASE URL
-  static const String baseUrl = 'http://192.168.1.22:8080';
+  static const String baseUrl = ' https://vast-gold-foal-cape.cyclic.app';
 
   ///Auth
   static const login = '/auth/login';
